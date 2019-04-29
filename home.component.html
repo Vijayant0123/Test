@@ -1,0 +1,36 @@
+<h1>Hello, world!</h1>
+<p>Welcome to your new single-page application, built with:</p>
+
+
+<div class="col-md-12">
+  <h2> Medicine Details</h2>
+  <div class="table-responsive table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Medicine Name</th>
+          <th>Brans</th>
+          <th>Quantity</th>
+          <th>Expiray Date</th>
+          <th>Price</th>
+          <th>Note</th>
+          <th> <button (click)="addMedicine()" class="btn btn-info"> Add Medicine</button></th>          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let medicine of medicines" [ngStyle]="{'background-color':getColor(medicine)}">
+          <td>{{medicine.name}}</td>
+          <td>{{medicine.brand}}</td>
+          <td>{{medicine.quantity}}</td>
+          <td>{{medicine.expiryDate}}</td>
+          <td>{{medicine.price}}</td>
+          <td>{{medicine.note}}</td>
+          <td>
+            <button (click)="deleteMedicine(medicine)" class="btn btn-info"> Delete</button>
+            <button (click)="editMedicine(medicine)" style="margin-left: 20px;" class="btn btn-info"> Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>  

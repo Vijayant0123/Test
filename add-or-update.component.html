@@ -1,0 +1,55 @@
+<div class="col-md-6">
+  <h2 class="text-center">{{formlabel}}</h2>
+  <button class="btn btn-info" (click)="goBack()">Go To Listing page</button>
+  
+  <form [formGroup]="addForm" novalidate class="form">
+
+
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input formControlName="name" placeholder="Medicine Name" name="name" class="form-control" id="name">
+      <div class="alert  alert-danger" *ngIf="addForm.get('name').hasError('required') && addForm.get('name').touched">
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="empSalary">Brand:</label>
+      <input formControlName="brand" placeholder="Medicine Brand" name="brand" class="form-control" id="brand">
+      <div class="alert  alert-danger" *ngIf="addForm.get('brand').hasError('maxlength') && addForm.get('brand').touched">
+        Brand is required and should less than 9 characters.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="expirydate">Expiry Date:</label>
+      <input formControlName="expirydate" placeholder="Expiry Date" name="expirydate" class="form-control" id="expirydate" type="date">
+      <div class="alert  alert-danger" *ngIf=" addForm.get('expirydate').hasError('maxlength') && addForm.get('expirydate').touched">
+        Expiray date is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="note">Note:</label>
+      <input formControlName="note" placeholder="Medicine note" name="note" class="form-control" id="note">
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input type="number" formControlName="quantity" placeholder="enter quantity" name="quantity" class="form-control" id="quantity">
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="number"  formControlName="price" placeholder="enter quantity" name="price" class="form-control" id="price">
+      <div class="alert  alert-danger" *ngIf=" addForm.get('price').hasError('required') && addForm.get('price').touched">
+        Expiray date is required.
+      </div>
+    </div>
+
+    <button class="btn btn-success" [disabled]='addForm.invalid' *ngIf="btnvisibility" (click)="AddMedidine()">Save</button>
+    <button class="btn btn-success" [disabled]='addForm.invalid' *ngIf="!btnvisibility" (click)="onUpdate()">Update</button>
+
+    <p>Form value: {{ addForm.value | json }}</p>
+  </form>
+</div>
